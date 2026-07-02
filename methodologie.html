@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Méthodologie et sources — pension alimentaire Québec | pensionalimentaire.ca</title>
+<meta name="description" content="Comment notre calculateur de pension alimentaire fonctionne. Sources officielles, formules du Modèle québécois 2026, références juridiques et limites du calcul.">
+<link rel="canonical" href="https://pensionalimentaire.ca/methodologie.html">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-flex">
+    <a href="/" class="logo">pensionalimentaire<span class="dot">.</span>ca</a>
+    <nav class="site-nav">
+      <a href="/calculateur.html">Calculateur</a>
+      <a href="/methodologie.html" class="active">Méthodologie</a>
+    </nav>
+  </div>
+</header>
+
+<main class="content-page">
+<div class="container">
+
+<h1>Méthodologie et sources</h1>
+<p class="lead">Notre calculateur respecte intégralement le Modèle québécois de fixation des pensions alimentaires pour enfants, applicable à compter du 1<sup>er</sup> janvier 2026.</p>
+
+<section>
+  <h2>1. Fondement juridique</h2>
+  <p>Au Québec, deux régimes coexistent pour fixer la pension alimentaire pour enfants :</p>
+  <ul>
+    <li><strong>Modèle québécois</strong> — s'applique aux couples non mariés (union de fait) et aux séparations devant un tribunal québécois. Régit par le <em>Règlement sur la fixation des pensions alimentaires pour enfants</em>.</li>
+    <li><strong>Lignes directrices fédérales</strong> — s'appliquent en cas de divorce (couples mariés). Régies par la <em>Loi sur le divorce</em> (Canada).</li>
+  </ul>
+  <p>Notre calculateur implémente le <strong>Modèle québécois</strong>.</p>
+</section>
+
+<section>
+  <h2>2. La formule de calcul</h2>
+  <p>Le calcul suit fidèlement le formulaire officiel <strong>SJ-786 (Annexe I — Formulaire de fixation des pensions alimentaires pour enfants)</strong>, parties 3 à 6.</p>
+
+  <h3>Étape 1 — Revenu disponible (Partie 3)</h3>
+  <p>Pour chaque parent :</p>
+  <pre>Revenu disponible = Revenu annuel brut − Déduction de base (13 865 $) − Cotisations syndicales − Cotisations professionnelles</pre>
+
+  <h3>Étape 2 — Facteur de répartition</h3>
+  <pre>Facteur du parent = (Revenu disponible du parent ÷ Revenu disponible total) × 100</pre>
+
+  <h3>Étape 3 — Contribution alimentaire de base (Partie 4)</h3>
+  <p>Lecture dans la <strong>Table de fixation 2026</strong> (Annexe I du Règlement) selon le revenu disponible total et le nombre d'enfants.</p>
+
+  <h3>Étape 4 — Calcul selon le mode de garde (Partie 5)</h3>
+  <ul>
+    <li><strong>Garde exclusive</strong> (parent non-gardien &lt; 20 % du temps) : pension complète selon facteur du non-gardien</li>
+    <li><strong>Droit de visite prolongé</strong> (20–40 %) : compensation = (% temps − 20 %) × contribution de base</li>
+    <li><strong>Garde partagée</strong> (chaque parent ≥ 40 %) : différentiel entre parts ajustées au temps</li>
+  </ul>
+
+  <h3>Étape 5 — Plafond capacité de payer (Partie 6)</h3>
+  <pre>Pension maximale = Revenu disponible du payeur × 50 %</pre>
+</section>
+
+<section>
+  <h2>3. Données utilisées</h2>
+  <ul>
+    <li><strong>Déduction de base 2026</strong> : 13 865 $ (Annexe I du Règlement, applicable à compter du 1<sup>er</sup> janvier 2026)</li>
+    <li><strong>Table de fixation 2026</strong> : ~100 paliers de revenu disponible × 6 colonnes (1 à 6 enfants), applicable à compter du 1<sup>er</sup> janvier 2026</li>
+    <li><strong>Plafond capacité de payer</strong> : 50 % du revenu disponible du payeur</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Sources officielles</h2>
+  <ul>
+    <li><a href="https://www.justice.gouv.qc.ca/couple-et-famille/separation-et-divorce/la-pension-alimentaire-pour-enfants/" target="_blank" rel="noopener">Justice Québec — Pension alimentaire pour enfants</a></li>
+    <li><a href="https://www.legisquebec.gouv.qc.ca/" target="_blank" rel="noopener">LégisQuébec — Règlement sur la fixation des pensions alimentaires pour enfants</a></li>
+    <li><a href="https://educaloi.qc.ca/" target="_blank" rel="noopener">Éducaloi — Pension alimentaire pour enfants</a></li>
+    <li><strong>Formulaire SJ-786</strong> (Annexe I) — disponible sur le site de Justice Québec</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Limites du calculateur</h2>
+  <p>Ce calculateur est <strong>indicatif</strong>. Il ne prend pas en compte automatiquement les situations suivantes (à traiter au cas par cas) :</p>
+  <ul>
+    <li>Revenus supérieurs à 200 000 $ (calcul discrétionnaire possible par le tribunal)</li>
+    <li>Situations de famille recomposée avec d'autres enfants à charge</li>
+    <li>Travailleurs autonomes avec déductions admises spécifiques</li>
+    <li>Pensions alimentaires entre conjoints (autres règles)</li>
+    <li>Demandes rétroactives ou ajustements pour antériorité</li>
+  </ul>
+  <p>Pour ces situations, consultez un avocat en droit familial ou un médiateur accrédité.</p>
+</section>
+
+<section class="disclaimer">
+  <h2>6. Avertissement légal</h2>
+  <p>Les résultats produits par ce calculateur sont fournis à titre <strong>indicatif</strong> et ne constituent <strong>pas un avis juridique</strong>. Ils ne peuvent en aucun cas remplacer le <a href="https://www.justice.gouv.qc.ca/" target="_blank" rel="noopener">formulaire SJ-786 officiel</a> requis pour toute démarche judiciaire au Québec.</p>
+  <p>L'auteur du site décline toute responsabilité quant à l'usage qui pourrait être fait de ces résultats. En cas de doute ou pour une démarche officielle, consultez un avocat en droit familial inscrit au Barreau du Québec ou un médiateur familial accrédité.</p>
+</section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="copyright">© 2026 pensionalimentaire.ca</p>
+  </div>
+</footer>
+
+</body>
+</html>

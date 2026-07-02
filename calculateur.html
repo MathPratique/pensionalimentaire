@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculateur de pension alimentaire — Modèle québécois 2026 | pensionalimentaire.ca</title>
+<meta name="description" content="Calculateur officiel de pension alimentaire pour enfants au Québec. Entrez les revenus des deux parents, le nombre d'enfants et le mode de garde pour obtenir un résultat détaillé.">
+<link rel="canonical" href="https://pensionalimentaire.ca/calculateur.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur de pension alimentaire — Modèle québécois 2026",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CAD"
+  },
+  "inLanguage": "fr-CA"
+}
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-flex">
+    <a href="/" class="logo">pensionalimentaire<span class="dot">.</span>ca</a>
+    <nav class="site-nav">
+      <a href="/calculateur.html" class="active">Calculateur</a>
+      <a href="/methodologie.html">Méthodologie</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+<div class="container">
+
+<h1>Calculateur de pension alimentaire pour enfants</h1>
+<p class="lead">Basé sur le Modèle québécois 2026 (Annexe I du Règlement). Les calculs s'effectuent dans votre navigateur — aucune donnée n'est transmise.</p>
+
+<form id="calc-form" class="calc-form">
+
+  <fieldset class="form-section">
+    <legend>① Revenus annuels — Parent A (père)</legend>
+    <div class="field">
+      <label for="revenu-pere">Revenu annuel brut total ($)</label>
+      <input type="number" id="revenu-pere" name="revenu-pere" min="0" step="100" value="0" required>
+      <small>Inclut salaire, commissions, travail autonome, AE, pensions, intérêts, loyers nets (formulaire ligne 209).</small>
+    </div>
+    <div class="field">
+      <label for="cotis-synd-pere">Cotisations syndicales annuelles ($)</label>
+      <input type="number" id="cotis-synd-pere" name="cotis-synd-pere" min="0" step="50" value="0">
+    </div>
+    <div class="field">
+      <label for="cotis-prof-pere">Cotisations professionnelles annuelles ($)</label>
+      <input type="number" id="cotis-prof-pere" name="cotis-prof-pere" min="0" step="50" value="0">
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>② Revenus annuels — Parent B (mère)</legend>
+    <div class="field">
+      <label for="revenu-mere">Revenu annuel brut total ($)</label>
+      <input type="number" id="revenu-mere" name="revenu-mere" min="0" step="100" value="0" required>
+    </div>
+    <div class="field">
+      <label for="cotis-synd-mere">Cotisations syndicales annuelles ($)</label>
+      <input type="number" id="cotis-synd-mere" name="cotis-synd-mere" min="0" step="50" value="0">
+    </div>
+    <div class="field">
+      <label for="cotis-prof-mere">Cotisations professionnelles annuelles ($)</label>
+      <input type="number" id="cotis-prof-mere" name="cotis-prof-mere" min="0" step="50" value="0">
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>③ Enfants et mode de garde</legend>
+    <div class="field">
+      <label for="nb-enfants">Nombre d'enfants communs</label>
+      <select id="nb-enfants" name="nb-enfants" required>
+        <option value="1">1 enfant</option>
+        <option value="2">2 enfants</option>
+        <option value="3">3 enfants</option>
+        <option value="4">4 enfants</option>
+        <option value="5">5 enfants</option>
+        <option value="6">6 enfants ou plus</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="mode-garde">Mode de garde</label>
+      <select id="mode-garde" name="mode-garde" required>
+        <option value="exclusive-mere">Garde exclusive à la mère (père : 0–20 % du temps)</option>
+        <option value="exclusive-pere">Garde exclusive au père (mère : 0–20 % du temps)</option>
+        <option value="visite-mere">Garde principale à la mère + visite prolongée du père (20–40 %)</option>
+        <option value="visite-pere">Garde principale au père + visite prolongée de la mère (20–40 %)</option>
+        <option value="partagee">Garde partagée (chaque parent ≥ 40 %)</option>
+      </select>
+    </div>
+
+    <div class="field" id="field-pct-temps" style="display:none">
+      <label for="pct-temps">Pourcentage du temps de garde du parent non-gardien (%)</label>
+      <input type="number" id="pct-temps" name="pct-temps" min="20" max="40" step="1" value="30">
+      <small>Entre 20 % et 40 % pour droit de visite prolongé.</small>
+    </div>
+
+    <div class="field" id="field-pct-partage" style="display:none">
+      <label for="pct-partage">Pourcentage du temps de garde du père (%)</label>
+      <input type="number" id="pct-partage" name="pct-partage" min="40" max="60" step="1" value="50">
+      <small>Entre 40 % et 60 %. La mère aura automatiquement le reste.</small>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-section">
+    <legend>④ Frais particuliers (optionnel) <span class="muted">— article 9 du Règlement</span></legend>
+    <p class="section-intro">Ces frais s'ajoutent à la pension de base et sont répartis au prorata des revenus disponibles. Indiquez les montants annuels <strong>nets</strong> (après crédits d'impôt et remboursements).</p>
+    <div class="field">
+      <label for="frais-garde">Frais de garde nets annuels ($)</label>
+      <input type="number" id="frais-garde" name="frais-garde" min="0" step="100" value="0">
+      <small>Garderie, CPE, gardienne (après crédits d'impôt).</small>
+    </div>
+    <div class="field">
+      <label for="frais-etudes">Frais d'études postsecondaires nets ($)</label>
+      <input type="number" id="frais-etudes" name="frais-etudes" min="0" step="100" value="0">
+      <small>CEGEP, université, formation professionnelle.</small>
+    </div>
+    <div class="field">
+      <label for="frais-autres">Autres frais particuliers nets ($)</label>
+      <input type="number" id="frais-autres" name="frais-autres" min="0" step="100" value="0">
+      <small>Frais médicaux non remboursés, école privée, activités exceptionnelles.</small>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary btn-large btn-full">Calculer la pension →</button>
+
+</form>
+
+<section id="result-panel" class="result-panel" style="display:none">
+  <h2>Résultat du calcul</h2>
+  <div id="result-content"></div>
+  <div class="result-actions">
+    <button type="button" id="btn-print" class="btn btn-secondary">🖨️ Imprimer / Sauvegarder PDF</button>
+    <button type="button" id="btn-reset" class="btn btn-secondary">↻ Nouveau calcul</button>
+  </div>
+  <div class="disclaimer">
+    <strong>⚠️ Avertissement :</strong> Ce résultat est indicatif. Pour une démarche officielle, utilisez le <a href="https://www.justice.gouv.qc.ca/" target="_blank" rel="noopener">formulaire SJ-786</a> et consultez un avocat en droit familial.
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="copyright">© 2026 pensionalimentaire.ca · <a href="/methodologie.html">Méthodologie &amp; Sources</a></p>
+  </div>
+</footer>
+
+<script src="/js/table-2026.js"></script>
+<script src="/js/calculateur.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pension-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "C:/Users/simon/OneDrive/Documents/GitHub/pensionalimentaire", "-l", "3500"],
+      "port": 3500
+    }
+  ]
+}
