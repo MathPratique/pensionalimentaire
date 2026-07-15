@@ -232,10 +232,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const resultat = calculer(inputs);
     afficherResultat(resultat);
+
+    // GA4 — événement de conversion principal
+    if (typeof gtag === 'function') {
+      let pensionBracket = 'aucune';
+      if (!resultat.erreur && resultat.pensionMensuelle > 0) {
+        const m = resultat.pensionMensuelle;
+        if (m < 250) pensionBracket = '0-250';
+        else if (m < 500) pensionBracket = '250-500';
+        else if (m < 750) pensionBracket = '500-750';
+        else if (m < 1000) pensionBracket = '750-1000';
+        else if (m < 1500) pensionBracket = '1000-1500';
+        else pensionBracket = '1500+';
+      }
+      gtag('event', 'calculator_submitted', {
+        mode_garde: inputs.modeGarde,
+        nombre_enfants: inputs.nombreEnfants,
+        has_frais_particuliers: (inputs.fraisGarde + inputs.fraisEtudes + inputs.fraisAutres) > 0,
+        pension_bracket: pensionBracket,
+        payeur: resultat.payeur || 'aucun'
+      });
+    }
   });
 
-  btnPrint.addEventListener('click', function() { window.print(); });
+  btnPrint.addEventListener('click', function() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'result_printed');
+    }
+    window.print();
+  });
+
   btnReset.addEventListener('click', function() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'result_reset');
+    }
     form.reset();
     resultPanel.style.display = 'none';
     updateGardeFields();
