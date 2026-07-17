@@ -157,6 +157,16 @@
 <section id="result-panel" class="result-panel" style="display:none">
   <h2>Résultat du calcul</h2>
   <div id="result-content"></div>
+
+  <!-- CTA post-résultat : mise en relation avec un avocat -->
+  <div class="cta-post-result">
+    <h3>Vous n'êtes pas d'accord avec ce montant, ou votre situation est particulière&nbsp;?</h3>
+    <p>Un avocat en droit familial peut vous accompagner. Gratuit, sans engagement.</p>
+    <a href="/consultation.html" class="btn btn-primary" onclick="sessionStorage.setItem('source_article', 'calculateur-post-resultat')">
+      Parlez à un avocat de votre situation&nbsp;→
+    </a>
+  </div>
+
   <div class="result-actions">
     <button type="button" id="btn-print" class="btn btn-secondary">🖨️ Imprimer / Sauvegarder PDF</button>
     <button type="button" id="btn-reset" class="btn btn-secondary">↻ Nouveau calcul</button>
