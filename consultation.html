@@ -359,6 +359,28 @@
     const formSection = document.getElementById('lead-form-section');
     const sourceInput = document.getElementById('source_article');
 
+    // -- Messages de validation HTML5 en français -------------------
+    // Les navigateurs affichent les messages natifs dans la langue du
+    // navigateur (souvent l'anglais), pas dans la langue de la page.
+    // On force le français via l'API Constraint Validation.
+    form.querySelectorAll('[required]').forEach(field => {
+      field.addEventListener('invalid', function() {
+        let msg = 'Veuillez remplir ce champ.';
+        if (this.validity.valueMissing) {
+          if (this.type === 'checkbox') msg = 'Veuillez cocher cette case pour continuer.';
+          else if (this.type === 'radio') msg = 'Veuillez sélectionner une option.';
+          else if (this.tagName === 'SELECT') msg = 'Veuillez sélectionner une option dans la liste.';
+          else if (this.type === 'email') msg = 'Veuillez remplir votre adresse courriel.';
+          else msg = 'Veuillez remplir ce champ.';
+        } else if (this.validity.typeMismatch && this.type === 'email') {
+          msg = 'Veuillez entrer une adresse courriel valide (format nom@domaine.com).';
+        }
+        this.setCustomValidity(msg);
+      });
+      field.addEventListener('input', function() { this.setCustomValidity(''); });
+      field.addEventListener('change', function() { this.setCustomValidity(''); });
+    });
+
     // -- Récupération de la source (article d'origine) --------------
     // Les CTAs sur les articles posent sessionStorage.setItem('source_article', 'nom-article')
     // avant de rediriger vers /consultation.html.
