@@ -242,20 +242,23 @@
           🔒 Vos renseignements sont traités conformément à notre <a href="/confidentialite.html">politique de confidentialité</a> et à la Loi 25 du Québec.
         </p>
       </form>
-
-      <!-- ============================================================
-           ÉTAT DE CONFIRMATION — Affiché après soumission réussie
-           ============================================================ -->
-      <section class="success-state" id="success-state">
-        <div class="checkmark">✓</div>
-        <h2>Votre demande a été envoyée</h2>
-        <p>Merci de nous avoir contactés. Un avocat en droit familial ou un partenaire de mise en relation vous contactera sous peu, généralement dans un délai de 24 à 48 heures ouvrables.</p>
-        <p>
-          <a href="/">Retour à l'accueil</a> ·
-          <a href="/calculateur.html" class="calculator-cta">Refaire un calcul</a>
-        </p>
-      </section>
     </div>
+
+    <!-- ============================================================
+         ÉTAT DE CONFIRMATION — Affiché après soumission réussie
+         Placé en dehors de .lead-form pour rester visible quand le
+         wrapper form est masqué (sinon success-state hériterait du
+         display:none de son parent).
+         ============================================================ -->
+    <section class="success-state" id="success-state">
+      <div class="checkmark">✓</div>
+      <h2>Votre demande a été envoyée</h2>
+      <p>Merci de nous avoir contactés. Un avocat en droit familial ou un partenaire de mise en relation vous contactera sous peu, généralement dans un délai de 24 à 48 heures ouvrables.</p>
+      <p>
+        <a href="/">Retour à l'accueil</a> ·
+        <a href="/calculateur.html" class="calculator-cta">Refaire un calcul</a>
+      </p>
+    </section>
   </div>
 </section>
 
@@ -353,7 +356,7 @@
     const form = document.getElementById('lead-form');
     const submitBtn = document.getElementById('submit-btn');
     const successState = document.getElementById('success-state');
-    const formSection = document.getElementById('lead-form-section');
+    const formWrapper = document.querySelector('.lead-form');
     const sourceInput = document.getElementById('source_article');
 
     // -- Messages de validation HTML5 en français -------------------
@@ -441,7 +444,7 @@
           try { sessionStorage.removeItem('source_article'); } catch (e) {}
 
           // Afficher l'état de succès
-          formSection.style.display = 'none';
+          formWrapper.style.display = 'none';
           successState.classList.add('visible');
           window.scrollTo({ top: successState.offsetTop - 40, behavior: 'smooth' });
         } else {
